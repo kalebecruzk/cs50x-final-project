@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Color Mix for CS50 — explore, mix, and build color palettes.">
+  <title>Color Mix — CS50</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Color Mix home">
+        <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span>color<span class="brand-light">mix</span><small>FOR CS50</small></span>
+      </a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a class="active" href="#mixer">Studio</a>
+        <a href="#palette">Palettes</a>
+        <a href="#learn">Color guide</a>
+      </nav>
+      <a class="header-link" href="#about">About project <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A COLOR PLAYGROUND</div>
+          <h1>Make color<br>make <em>sense.</em></h1>
+          <p>Explore the space between colors. Mix, discover, and build palettes that bring your ideas to life.</p>
+          <a class="primary-button" href="#mixer">Start mixing <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-label="Decorative overlapping color circles">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="color-orb orb-crimson"></div>
+          <div class="color-orb orb-coral"></div>
+          <div class="color-orb orb-cream"></div>
+          <div class="art-label label-top">#A51C30</div>
+          <div class="art-label label-bottom">COLOR, REIMAGINED.</div>
+        </div>
+        <div class="hero-footer"><span>01 / EXPLORE</span><span>DESIGNED FOR CURIOUS MINDS</span></div>
+      </section>
+
+      <section class="section mixer-section" id="mixer">
+        <div class="section-heading">
+          <div><div class="eyebrow">THE COLOR LAB</div><h2>Your mix. Your rules.</h2></div>
+          <p>Choose two colors and find the shade<br class="desktop-only"> that lives in between.</p>
+        </div>
+
+        <div class="mixer-card">
+          <div class="color-inputs">
+            <div class="color-control">
+              <label for="colorA">COLOR ONE <span class="number">01</span></label>
+              <div class="picker-row"><input type="color" id="colorA" value="#A51C30" aria-label="Choose first color"><input type="text" id="hexA" value="#A51C30" maxlength="7" spellcheck="false" aria-label="First color HEX value"></div>
+              <div class="color-hint"><span class="mini-dot" id="dotA"></span><span id="nameA">Harvard Crimson</span></div>
+            </div>
+            <div class="mix-symbol" aria-hidden="true">+</div>
+            <div class="color-control">
+              <label for="colorB">COLOR TWO <span class="number">02</span></label>
+              <div class="picker-row"><input type="color" id="colorB" value="#F2C6A0" aria-label="Choose second color"><input type="text" id="hexB" value="#F2C6A0" maxlength="7" spellcheck="false" aria-label="Second color HEX value"></div>
+              <div class="color-hint"><span class="mini-dot" id="dotB"></span><span id="nameB">Soft Apricot</span></div>
+            </div>
+          </div>
+          <div class="mix-action"><label for="mixRatio">BLEND RATIO <span id="ratioValue">50 / 50</span></label><input id="mixRatio" type="range" min="0" max="100" value="50"><div class="range-labels"><span>Color one</span><span>Color two</span></div></div>
+          <div class="result-panel">
+            <div class="result-swatch" id="resultSwatch"><span class="result-chip">YOUR RESULT</span></div>
+            <div class="result-details">
+              <div class="result-title-row"><div><div class="eyebrow">THE IN-BETWEEN</div><h3 id="resultName">Warm Rose</h3></div><span class="result-number">MIX / 001</span></div>
+              <div class="code-grid">
+                <button class="code-box" data-copy="resultHex"><span>HEX</span><strong id="resultHex">#CE7168</strong><b>Copy ↗</b></button>
+                <button class="code-box" data-copy="resultRgb"><span>RGB</span><strong id="resultRgb">206, 113, 104</strong><b>Copy ↗</b></button>
+              </div>
+              <button class="secondary-button" id="randomMix">Surprise me <span aria-hidden="true">✳</span></button>
+              <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section palette-section" id="palette">
+        <div class="section-heading">
+          <div><div class="eyebrow">FIND YOUR PALETTE</div><h2>Five shades. One feeling.</h2></div>
+          <button class="text-button" id="generatePalette">Generate new palette <span aria-hidden="true">↻</span></button>
+        </div>
+        <div class="palette-grid" id="paletteGrid">
+          <button class="palette-color" data-color="#A51C30"><span class="palette-fill" style="--swatch:#A51C30"></span><span class="palette-meta"><b>Crimson</b><small>#A51C30</small></span><span class="copy-icon">↗</span></button>
+          <button class="palette-color" data-color="#D65A4A"><span class="palette-fill" style="--swatch:#D65A4A"></span><span class="palette-meta"><b>Persimmon</b><small>#D65A4A</small></span><span class="copy-icon">↗</span></button>
+          <button class="palette-color" data-color="#F2C6A0"><span class="palette-fill" style="--swatch:#F2C6A0"></span><span class="palette-meta"><b>Apricot</b><small>#F2C6A0</small></span><span class="copy-icon">↗</span></button>
+          <button class="palette-color" data-color="#E9DCC9"><span class="palette-fill" style="--swatch:#E9DCC9"></span><span class="palette-meta"><b>Linen</b><small>#E9DCC9</small></span><span class="copy-icon">↗</span></button>
+          <button class="palette-color" data-color="#273B35"><span class="palette-fill" style="--swatch:#273B35"></span><span class="palette-meta"><b>Forest</b><small>#273B35</small></span><span class="copy-icon">↗</span></button>
+        </div>
+        <p class="section-note">Tip: select any shade to load it into the mixer. Click a HEX code to copy it.</p>
+      </section>
+
+      <section class="learn-section" id="learn">
+        <div class="learn-intro"><div class="eyebrow">A LITTLE COLOR THEORY</div><h2>Color is a language.<br><em>Learn to speak it.</em></h2><p>Every color carries a mood. Start with a hue, find its balance, and build combinations that feel intentional.</p></div>
+        <div class="learn-cards">
+          <article class="learn-card"><span class="learn-icon">◒</span><h3>Blend</h3><p>Mix two colors by adjusting the balance between them. The result updates instantly.</p><span class="learn-index">01</span></article>
+          <article class="learn-card"><span class="learn-icon">◉</span><h3>Explore</h3><p>Generate fresh palettes and discover combinations you might not have tried.</p><span class="learn-index">02</span></article>
+          <article class="learn-card"><span class="learn-icon">⌘</span><h3>Take it with you</h3><p>Copy HEX and RGB values to use in your own designs and projects.</p><span class="learn-index">03</span></article>
+        </div>
+      </section>
+
+      <section class="about-strip" id="about"><div class="about-mark">CM.</div><div><div class="eyebrow">BUILT AS A CS50 FINAL PROJECT</div><p>Color Mix is an independent educational project exploring color through code, design, and experimentation. It is not affiliated with or endorsed by Harvard University or the CS50 course.</p></div><span class="about-year">2026</span></section>
+    </main>
+
+    <footer class="footer"><a class="brand footer-brand" href="#"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span>color<span class="brand-light">mix</span><small>FOR CS50</small></span></a><span>MADE WITH CURIOSITY.</span><a href="#mixer">Back to top ↑</a></footer>
+  </div>
+</body>
+</html>
